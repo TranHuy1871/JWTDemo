@@ -25,8 +25,9 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         opt.TokenValidationParameters = new TokenValidationParameters
         {
             // tự cấp token
-            ValidateIssuer = false,
-            ValidateAudience = false,
+            ValidateIssuer = false, //Không xác thực nguồn phát hành (issuer) của token. 
+            ValidateAudience = false,  //Không xác thực đối tượng chấp nhận (audience) của token
+            ValidateLifetime = true,  // xđ time sống của token
 
             // ký vào token
             ValidateIssuerSigningKey = true,
